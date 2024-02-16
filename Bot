@@ -8,6 +8,7 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.common.exceptions import ElementClickInterceptedException
+from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -40,11 +41,17 @@ def Store() :
     
     
     
-    upgrade_div = driver.find_element(By.ID, 'upgrades')
-    enabled_divs = upgrade_div.find_elements(By.XPATH, ".//div[contains(@class, 'enabled')]")
-    driver.execute_script("arguments[0].scrollIntoView();", upgrade_div)
-    for div in enabled_divs:
-        div.click()
+    
+    #Upgrades
+    try:
+        upgrade_div = driver.find_element(By.ID, 'upgrades')
+        enabled_div = upgrade_div.find_element(By.XPATH, ".//div[contains(@class, 'enabled')]")
+        driver.execute_script("arguments[0].scrollIntoView();", enabled_div)
+        enabled_div.click()
+    except NoSuchElementException:
+        pass  # Handle the case when the upgrade_div or the enabled_div is not found
+    except ElementClickInterceptedException:
+        pass  # Handle th
 
     #Check for You
     while True:
