@@ -8,10 +8,13 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.common.exceptions import ElementClickInterceptedException
+from selenium.common.exceptions import StaleElementReferenceException
 from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import WebDriverException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+import multiprocessing
 import time
 
 
@@ -43,27 +46,43 @@ def Store() :
     
     
     #Upgrades
-    try:
-        upgrade_div = driver.find_element(By.ID, 'upgrades')
-        enabled_div = upgrade_div.find_element(By.XPATH, ".//div[contains(@class, 'enabled')]")
-        driver.execute_script("arguments[0].scrollIntoView();", enabled_div)
-        enabled_div.click()
-    except NoSuchElementException:
-        pass  # Handle the case when the upgrade_div or the enabled_div is not found
-    except ElementClickInterceptedException:
-        pass  # Handle th
+    while True :
+        try:
+            upgrade_div = driver.find_element(By.ID, 'upgrades')
+            enabled_div = upgrade_div.find_element(By.XPATH, ".//div[contains(@class, 'enabled')]")
+            driver.execute_script("arguments[0].scrollIntoView();", enabled_div)
+            enabled_div.click()
+        except NoSuchElementException:
+            pass  # Handle the case when the upgrade_div or the enabled_div is not found
+            break
+        except ElementClickInterceptedException:
+            pass  # Handle th
+            break
+        except StaleElementReferenceException:
+            pass
+            break
+        except WebDriverException:
+            pass
+            break
 
     #Check for You
     while True:
         You = driver.find_element(By.XPATH, YouStore)
         You_attribute = You.get_attribute("class")
         try:
-            if "product unlocked enabled" in You_attribute:
+            if "enabled" in You_attribute:
                 driver.execute_script("arguments[0].scrollIntoView();", You)
                 You_Button.click()
             else :
                 break
         except ElementClickInterceptedException:
+            pass
+            break
+        except StaleElementReferenceException:
+            pass
+            break
+        except WebDriverException:
+            pass
             break
 
     #Check for CortexBaker
@@ -71,12 +90,19 @@ def Store() :
         CortexBaker = driver.find_element(By.XPATH, CortexBakerStore)
         CortexBaker_attribute = CortexBaker.get_attribute("class")
         try:
-            if "product unlocked enabled" in CortexBaker_attribute:
+            if "enabled" in CortexBaker_attribute:
                 driver.execute_script("arguments[0].scrollIntoView();", CortexBaker)
                 CortexBaker_Button.click()
             else :
                 break
         except ElementClickInterceptedException:
+            pass
+            break
+        except StaleElementReferenceException:
+            pass
+            break
+        except WebDriverException:
+            pass
             break
         
      #Check for Idlevarse
@@ -84,12 +110,19 @@ def Store() :
         Idlevarse = driver.find_element(By.XPATH, IdlevarseStore)
         Idlevarse_attribute = Idlevarse.get_attribute("class")
         try:
-            if "product unlocked enabled" in Idlevarse_attribute:
+            if "enabled" in Idlevarse_attribute:
                 driver.execute_script("arguments[0].scrollIntoView();", Idlevarse)
                 Idlevarse_Button.click()
             else :
                 break
         except ElementClickInterceptedException:
+            pass
+            break
+        except StaleElementReferenceException:
+            pass
+            break
+        except WebDriverException:
+            pass
             break
         
      #Check for JavascriptConsole
@@ -97,12 +130,19 @@ def Store() :
         JavascriptConsole = driver.find_element(By.XPATH, JavascriptConsoleStore)
         JavascriptConsole_attribute = JavascriptConsole.get_attribute("class")
         try:
-            if "product unlocked enabled" in JavascriptConsole_attribute:
+            if "enabled" in JavascriptConsole_attribute:
                 driver.execute_script("arguments[0].scrollIntoView();", JavascriptConsole)
                 JavascriptConsole_Button.click()
             else :
                 break
         except ElementClickInterceptedException:
+            pass
+            break
+        except StaleElementReferenceException:
+            pass
+            break
+        except WebDriverException:
+            pass
             break
     
      #Check for FractalEngine
@@ -110,12 +150,19 @@ def Store() :
         FractalEngine = driver.find_element(By.XPATH, FractalEngineStore)
         FractalEngine_attribute = FractalEngine.get_attribute("class")
         try:
-            if "product unlocked enabled" in FractalEngine_attribute:
+            if "enabled" in FractalEngine_attribute:
                 driver.execute_script("arguments[0].scrollIntoView();", FractalEngine)
                 FractalEngine_Button.click()
             else :
                 break
         except ElementClickInterceptedException:
+            pass
+            break
+        except StaleElementReferenceException:
+            pass
+            break
+        except WebDriverException:
+            pass
             break
         
     #Check for ChanceMaker
@@ -123,12 +170,19 @@ def Store() :
         ChanceMaker = driver.find_element(By.XPATH, ChanceMakerStore)
         ChanceMaker_attribute = ChanceMaker.get_attribute("class")
         try:
-            if "product unlocked enabled" in ChanceMaker_attribute:
+            if "enabled" in ChanceMaker_attribute:
                 driver.execute_script("arguments[0].scrollIntoView();", ChanceMaker)
                 ChanceMaker_Button.click()
             else :
                 break
         except ElementClickInterceptedException:
+            pass
+            break
+        except StaleElementReferenceException:
+            pass
+            break
+        except WebDriverException:
+            pass
             break
         
     #Check for Prism
@@ -136,12 +190,19 @@ def Store() :
         Prism = driver.find_element(By.XPATH, IdlevarseStore)
         Prism_attribute = Prism.get_attribute("class")
         try:
-            if "product unlocked enabled" in Prism_attribute:
+            if "enabled" in Prism_attribute:
                 driver.execute_script("arguments[0].scrollIntoView();", Prism)
                 Prism_Button.click()
             else :
                 break
         except ElementClickInterceptedException:
+            pass
+            break
+        except StaleElementReferenceException:
+            pass
+            break
+        except WebDriverException:
+            pass
             break
         
     #Check for AntyMatterCondencer
@@ -149,12 +210,19 @@ def Store() :
         AntyMatterCondencer = driver.find_element(By.XPATH, AntyMatterCondencerStore)
         AntyMatterCondencer_attribute = AntyMatterCondencer.get_attribute("class")
         try:
-            if "product unlocked enabled" in AntyMatterCondencer_attribute:
+            if "enabled" in AntyMatterCondencer_attribute:
                 driver.execute_script("arguments[0].scrollIntoView();", AntyMatterCondencer)
                 AntyMatterCondencer_Button.click()
             else :
                 break
         except ElementClickInterceptedException:
+            pass
+            break
+        except StaleElementReferenceException:
+            pass
+            break
+        except WebDriverException:
+            pass
             break
         
     #Check for TimeMachine
@@ -162,12 +230,19 @@ def Store() :
         TimeMachine = driver.find_element(By.XPATH, TimeMachineStore)
         TimeMachine_attribute = TimeMachine.get_attribute("class")
         try:
-            if "product unlocked enabled" in TimeMachine_attribute:
+            if "enabled" in TimeMachine_attribute:
                 driver.execute_script("arguments[0].scrollIntoView();", TimeMachine)
                 TimeMachine_Button.click()
             else :
                 break
         except ElementClickInterceptedException:
+            pass
+            break
+        except StaleElementReferenceException:
+            pass
+            break
+        except WebDriverException:
+            pass
             break
         
     #Check for Portal
@@ -175,12 +250,19 @@ def Store() :
         Portal = driver.find_element(By.XPATH, PortalStore)
         Portal_attribute = Portal.get_attribute("class")
         try:
-            if "product unlocked enabled" in Portal_attribute:
+            if "enabled" in Portal_attribute:
                 driver.execute_script("arguments[0].scrollIntoView();", Portal)
                 Portal_Button.click()
             else :
                 break
         except ElementClickInterceptedException:
+            pass
+            break
+        except StaleElementReferenceException:
+            pass
+            break
+        except WebDriverException:
+            pass
             break
         
     #Check for AlchamyLab
@@ -188,12 +270,19 @@ def Store() :
         AlchamyLab = driver.find_element(By.XPATH, AlchamyLabStore)
         AlchamyLab_attribute = AlchamyLab.get_attribute("class")
         try:
-            if "product unlocked enabled" in AlchamyLab_attribute:
+            if "enabled" in AlchamyLab_attribute:
                 driver.execute_script("arguments[0].scrollIntoView();", AlchamyLab)
                 AlchamyLab_Button.click()
             else :
                 break
         except ElementClickInterceptedException:
+            pass
+            break
+        except StaleElementReferenceException:
+            pass
+            break
+        except WebDriverException:
+            pass
             break
         
     #Check for Shipment
@@ -201,12 +290,19 @@ def Store() :
         Shipment = driver.find_element(By.XPATH, ShipmentStore)
         Shipment_attribute = Shipment.get_attribute("class")
         try:
-            if "product unlocked enabled" in Shipment_attribute:
+            if "enabled" in Shipment_attribute:
                 driver.execute_script("arguments[0].scrollIntoView();", Shipment)
                 Shipment_Button.click()
             else :
                 break
         except ElementClickInterceptedException:
+            pass
+            break
+        except StaleElementReferenceException:
+            pass
+            break
+        except WebDriverException:
+            pass
             break
         
     #Check for WizardsTower
@@ -214,12 +310,19 @@ def Store() :
         WizardsTower = driver.find_element(By.XPATH, WizardsTowerStore)
         WizardsTower_attribute = WizardsTower.get_attribute("class")
         try:
-            if "product unlocked enabled" in WizardsTower_attribute:
+            if "enabled" in WizardsTower_attribute:
                 driver.execute_script("arguments[0].scrollIntoView();", WizardsTower)
                 WizardsTower_Button.click()
             else :
                 break
         except ElementClickInterceptedException:
+            pass
+            break
+        except StaleElementReferenceException:
+            pass
+            break
+        except WebDriverException:
+            pass
             break
         
     #Check for Temple
@@ -227,12 +330,19 @@ def Store() :
         Temple = driver.find_element(By.XPATH, TempleStore)
         Temple_attribute = Temple.get_attribute("class")
         try:
-            if "product unlocked enabled" in Temple_attribute:
+            if "enabled" in Temple_attribute:
                 driver.execute_script("arguments[0].scrollIntoView();", Temple)
                 Temple_Button.click()
             else :
                 break
         except ElementClickInterceptedException:
+            pass
+            break
+        except StaleElementReferenceException:
+            pass
+            break
+        except WebDriverException:
+            pass
             break
         
     #Check for Bank
@@ -240,12 +350,19 @@ def Store() :
         Bank = driver.find_element(By.XPATH, BankStore)
         Bank_attribute = Bank.get_attribute("class")
         try:
-            if "product unlocked enabled" in Bank_attribute:
+            if "enabled" in Bank_attribute:
                 driver.execute_script("arguments[0].scrollIntoView();", Bank)
                 Bank_Button.click()
             else :
                 break
         except ElementClickInterceptedException:
+            pass
+            break
+        except StaleElementReferenceException:
+            pass
+            break
+        except WebDriverException:
+            pass
             break
         
     #Check for Factory
@@ -253,12 +370,19 @@ def Store() :
         Factory = driver.find_element(By.XPATH, FactoryStore)
         Factory_attribute = Factory.get_attribute("class")
         try:
-            if "product unlocked enabled" in Factory_attribute:
+            if "enabled" in Factory_attribute:
                 driver.execute_script("arguments[0].scrollIntoView();", Factory)
                 Factory_Button.click()
             else :
                 break
         except ElementClickInterceptedException:
+            pass
+            break
+        except StaleElementReferenceException:
+            pass
+            break
+        except WebDriverException:
+            pass
             break
     
     #Check for Mine  
@@ -266,12 +390,19 @@ def Store() :
         Mine = driver.find_element(By.XPATH, MineStore)
         Mine_attribute = Mine.get_attribute("class")
         try:
-            if "product unlocked enabled" in Mine_attribute:
+            if "enabled" in Mine_attribute:
                 driver.execute_script("arguments[0].scrollIntoView();", Mine)
                 Mine_Button.click()
             else :
                 break
         except ElementClickInterceptedException:
+            pass
+            break
+        except StaleElementReferenceException:
+            pass
+            break
+        except WebDriverException:
+            pass
             break
     
     #Check for Farm   
@@ -279,12 +410,19 @@ def Store() :
         Farm = driver.find_element(By.XPATH, FarmStore)
         Farm_attribute = Farm.get_attribute("class")
         try:
-            if "product unlocked enabled" in Farm_attribute:
+            if "enabled" in Farm_attribute:
                 driver.execute_script("arguments[0].scrollIntoView();", Farm)
                 Farm_Button.click()
             else :
                 break
         except ElementClickInterceptedException:
+            pass
+            break
+        except StaleElementReferenceException:
+            pass
+            break
+        except WebDriverException:
+            pass
             break
     
     
@@ -293,12 +431,19 @@ def Store() :
         Grandmom = driver.find_element(By.XPATH, GrandmomStore)
         Grandmom_attribute = Grandmom.get_attribute("class")
         try:
-            if "product unlocked enabled" in Grandmom_attribute:
+            if "enabled" in Grandmom_attribute:
                 driver.execute_script("arguments[0].scrollIntoView();", Grandmom)
                 Grandmom_Button.click()
             else :
                 break
         except ElementClickInterceptedException:
+            pass
+            break
+        except StaleElementReferenceException:
+            pass
+            break
+        except WebDriverException:
+            pass
             break
     
     #Check for clicker
@@ -306,12 +451,19 @@ def Store() :
         Clicker = driver.find_element(By.XPATH, ClickerStore)
         Clicker_attribute = Clicker.get_attribute("class")
         try:
-            if "product unlocked enabled" in Clicker_attribute:
+            if "enabled" in Clicker_attribute:
                 driver.execute_script("arguments[0].scrollIntoView();", Clicker)
                 Clicker_Button.click()
             else : 
                 break
         except ElementClickInterceptedException:
+            pass
+            break
+        except StaleElementReferenceException:
+            pass
+            break
+        except WebDriverException:
+            pass
             break
 
     
