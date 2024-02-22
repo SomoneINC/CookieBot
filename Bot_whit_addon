@@ -1,0 +1,537 @@
+from selenium import webdriver
+import selenium
+import requests
+import re
+from bs4 import BeautifulSoup
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.common.exceptions import ElementClickInterceptedException
+from selenium.common.exceptions import StaleElementReferenceException
+from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import WebDriverException
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+import multiprocessing
+import time
+
+
+def Store() :
+    You_Button = driver.find_element(By.XPATH, YouStore)
+    CortexBaker_Button = driver.find_element(By.XPATH, CortexBakerStore)
+    Idlevarse_Button = driver.find_element(By.XPATH, IdlevarseStore)
+    JavascriptConsole_Button = driver.find_element(By.XPATH, JavascriptConsoleStore)
+    FractalEngine_Button = driver.find_element(By.XPATH, FractalEngineStore)
+    ChanceMaker_Button = driver.find_element(By.XPATH, ChanceMakerStore)
+    Prism_Button = driver.find_element(By.XPATH, PrismStore)
+    AntyMatterCondencer_Button = driver.find_element(By.XPATH, AntyMatterCondencerStore)
+    TimeMachine_Button = driver.find_element(By.XPATH, TimeMachineStore)
+    Portal_Button = driver.find_element(By.XPATH, PortalStore)
+    AlchamyLab_Button = driver.find_element(By.XPATH, AlchamyLabStore)
+    Shipment_Button = driver.find_element(By.XPATH, ShipmentStore)
+    WizardsTower_Button = driver.find_element(By.XPATH, WizardsTowerStore)
+    Temple_Button = driver.find_element(By.XPATH, TempleStore)
+    Bank_Button = driver.find_element(By.XPATH, BankStore)
+    Factory_Button = driver.find_element(By.XPATH, FactoryStore)
+    Mine_Button = driver.find_element(By.XPATH, MineStore)
+    Farm_Button = driver.find_element(By.XPATH, FarmStore)
+    Grandmom_Button = driver.find_element(By.XPATH, GrandmomStore)
+    Clicker_Button = driver.find_element(By.XPATH, ClickerStore)
+    html_code = driver.page_source
+    soup = BeautifulSoup(html_code, 'html.parser')
+    
+    
+    
+    
+    #Upgrades
+    while True :
+        try:
+            upgrade_div = driver.find_element(By.ID, 'upgrades')
+            enabled_div = upgrade_div.find_element(By.XPATH, ".//div[contains(@class, 'enabled')]")
+            driver.execute_script("arguments[0].scrollIntoView();", enabled_div)
+            enabled_div.click()
+        except NoSuchElementException:
+            pass  # Handle the case when the upgrade_div or the enabled_div is not found
+            break
+        except ElementClickInterceptedException:
+            pass  # Handle th
+            break
+        except StaleElementReferenceException:
+            pass
+            break
+        except WebDriverException:
+            pass
+            break
+
+    #Check for You
+    while True:
+        You = driver.find_element(By.XPATH, YouStore)
+        You_attribute = You.get_attribute("class")
+        try:
+            if "enabled" in You_attribute:
+                driver.execute_script("arguments[0].scrollIntoView();", You)
+                You_Button.click()
+            else :
+                break
+        except ElementClickInterceptedException:
+            pass
+            break
+        except StaleElementReferenceException:
+            pass
+            break
+        except WebDriverException:
+            pass
+            break
+
+    #Check for CortexBaker
+    while True:
+        CortexBaker = driver.find_element(By.XPATH, CortexBakerStore)
+        CortexBaker_attribute = CortexBaker.get_attribute("class")
+        try:
+            if "enabled" in CortexBaker_attribute:
+                driver.execute_script("arguments[0].scrollIntoView();", CortexBaker)
+                CortexBaker_Button.click()
+            else :
+                break
+        except ElementClickInterceptedException:
+            pass
+            break
+        except StaleElementReferenceException:
+            pass
+            break
+        except WebDriverException:
+            pass
+            break
+        
+     #Check for Idlevarse
+    while True:
+        Idlevarse = driver.find_element(By.XPATH, IdlevarseStore)
+        Idlevarse_attribute = Idlevarse.get_attribute("class")
+        try:
+            if "enabled" in Idlevarse_attribute:
+                driver.execute_script("arguments[0].scrollIntoView();", Idlevarse)
+                Idlevarse_Button.click()
+            else :
+                break
+        except ElementClickInterceptedException:
+            pass
+            break
+        except StaleElementReferenceException:
+            pass
+            break
+        except WebDriverException:
+            pass
+            break
+        
+     #Check for JavascriptConsole
+    while True:
+        JavascriptConsole = driver.find_element(By.XPATH, JavascriptConsoleStore)
+        JavascriptConsole_attribute = JavascriptConsole.get_attribute("class")
+        try:
+            if "enabled" in JavascriptConsole_attribute:
+                driver.execute_script("arguments[0].scrollIntoView();", JavascriptConsole)
+                JavascriptConsole_Button.click()
+            else :
+                break
+        except ElementClickInterceptedException:
+            pass
+            break
+        except StaleElementReferenceException:
+            pass
+            break
+        except WebDriverException:
+            pass
+            break
+    
+     #Check for FractalEngine
+    while True:
+        FractalEngine = driver.find_element(By.XPATH, FractalEngineStore)
+        FractalEngine_attribute = FractalEngine.get_attribute("class")
+        try:
+            if "enabled" in FractalEngine_attribute:
+                driver.execute_script("arguments[0].scrollIntoView();", FractalEngine)
+                FractalEngine_Button.click()
+            else :
+                break
+        except ElementClickInterceptedException:
+            pass
+            break
+        except StaleElementReferenceException:
+            pass
+            break
+        except WebDriverException:
+            pass
+            break
+        
+    #Check for ChanceMaker
+    while True:
+        ChanceMaker = driver.find_element(By.XPATH, ChanceMakerStore)
+        ChanceMaker_attribute = ChanceMaker.get_attribute("class")
+        try:
+            if "enabled" in ChanceMaker_attribute:
+                driver.execute_script("arguments[0].scrollIntoView();", ChanceMaker)
+                ChanceMaker_Button.click()
+            else :
+                break
+        except ElementClickInterceptedException:
+            pass
+            break
+        except StaleElementReferenceException:
+            pass
+            break
+        except WebDriverException:
+            pass
+            break
+        
+    #Check for Prism
+    while True:
+        Prism = driver.find_element(By.XPATH, IdlevarseStore)
+        Prism_attribute = Prism.get_attribute("class")
+        try:
+            if "enabled" in Prism_attribute:
+                driver.execute_script("arguments[0].scrollIntoView();", Prism)
+                Prism_Button.click()
+            else :
+                break
+        except ElementClickInterceptedException:
+            pass
+            break
+        except StaleElementReferenceException:
+            pass
+            break
+        except WebDriverException:
+            pass
+            break
+        
+    #Check for AntyMatterCondencer
+    while True:
+        AntyMatterCondencer = driver.find_element(By.XPATH, AntyMatterCondencerStore)
+        AntyMatterCondencer_attribute = AntyMatterCondencer.get_attribute("class")
+        try:
+            if "enabled" in AntyMatterCondencer_attribute:
+                driver.execute_script("arguments[0].scrollIntoView();", AntyMatterCondencer)
+                AntyMatterCondencer_Button.click()
+            else :
+                break
+        except ElementClickInterceptedException:
+            pass
+            break
+        except StaleElementReferenceException:
+            pass
+            break
+        except WebDriverException:
+            pass
+            break
+        
+    #Check for TimeMachine
+    while True:
+        TimeMachine = driver.find_element(By.XPATH, TimeMachineStore)
+        TimeMachine_attribute = TimeMachine.get_attribute("class")
+        try:
+            if "enabled" in TimeMachine_attribute:
+                driver.execute_script("arguments[0].scrollIntoView();", TimeMachine)
+                TimeMachine_Button.click()
+            else :
+                break
+        except ElementClickInterceptedException:
+            pass
+            break
+        except StaleElementReferenceException:
+            pass
+            break
+        except WebDriverException:
+            pass
+            break
+        
+    #Check for Portal
+    while True:
+        Portal = driver.find_element(By.XPATH, PortalStore)
+        Portal_attribute = Portal.get_attribute("class")
+        try:
+            if "enabled" in Portal_attribute:
+                driver.execute_script("arguments[0].scrollIntoView();", Portal)
+                Portal_Button.click()
+            else :
+                break
+        except ElementClickInterceptedException:
+            pass
+            break
+        except StaleElementReferenceException:
+            pass
+            break
+        except WebDriverException:
+            pass
+            break
+        
+    #Check for AlchamyLab
+    while True:
+        AlchamyLab = driver.find_element(By.XPATH, AlchamyLabStore)
+        AlchamyLab_attribute = AlchamyLab.get_attribute("class")
+        try:
+            if "enabled" in AlchamyLab_attribute:
+                driver.execute_script("arguments[0].scrollIntoView();", AlchamyLab)
+                AlchamyLab_Button.click()
+            else :
+                break
+        except ElementClickInterceptedException:
+            pass
+            break
+        except StaleElementReferenceException:
+            pass
+            break
+        except WebDriverException:
+            pass
+            break
+        
+    #Check for Shipment
+    while True:
+        Shipment = driver.find_element(By.XPATH, ShipmentStore)
+        Shipment_attribute = Shipment.get_attribute("class")
+        try:
+            if "enabled" in Shipment_attribute:
+                driver.execute_script("arguments[0].scrollIntoView();", Shipment)
+                Shipment_Button.click()
+            else :
+                break
+        except ElementClickInterceptedException:
+            pass
+            break
+        except StaleElementReferenceException:
+            pass
+            break
+        except WebDriverException:
+            pass
+            break
+        
+    #Check for WizardsTower
+    while True:
+        WizardsTower = driver.find_element(By.XPATH, WizardsTowerStore)
+        WizardsTower_attribute = WizardsTower.get_attribute("class")
+        try:
+            if "enabled" in WizardsTower_attribute:
+                driver.execute_script("arguments[0].scrollIntoView();", WizardsTower)
+                WizardsTower_Button.click()
+            else :
+                break
+        except ElementClickInterceptedException:
+            pass
+            break
+        except StaleElementReferenceException:
+            pass
+            break
+        except WebDriverException:
+            pass
+            break
+        
+    #Check for Temple
+    while True:
+        Temple = driver.find_element(By.XPATH, TempleStore)
+        Temple_attribute = Temple.get_attribute("class")
+        try:
+            if "enabled" in Temple_attribute:
+                driver.execute_script("arguments[0].scrollIntoView();", Temple)
+                Temple_Button.click()
+            else :
+                break
+        except ElementClickInterceptedException:
+            pass
+            break
+        except StaleElementReferenceException:
+            pass
+            break
+        except WebDriverException:
+            pass
+            break
+        
+    #Check for Bank
+    while True:
+        Bank = driver.find_element(By.XPATH, BankStore)
+        Bank_attribute = Bank.get_attribute("class")
+        try:
+            if "enabled" in Bank_attribute:
+                driver.execute_script("arguments[0].scrollIntoView();", Bank)
+                Bank_Button.click()
+            else :
+                break
+        except ElementClickInterceptedException:
+            pass
+            break
+        except StaleElementReferenceException:
+            pass
+            break
+        except WebDriverException:
+            pass
+            break
+        
+    #Check for Factory
+    while True:
+        Factory = driver.find_element(By.XPATH, FactoryStore)
+        Factory_attribute = Factory.get_attribute("class")
+        try:
+            if "enabled" in Factory_attribute:
+                driver.execute_script("arguments[0].scrollIntoView();", Factory)
+                Factory_Button.click()
+            else :
+                break
+        except ElementClickInterceptedException:
+            pass
+            break
+        except StaleElementReferenceException:
+            pass
+            break
+        except WebDriverException:
+            pass
+            break
+    
+    #Check for Mine  
+    while True:
+        Mine = driver.find_element(By.XPATH, MineStore)
+        Mine_attribute = Mine.get_attribute("class")
+        try:
+            if "enabled" in Mine_attribute:
+                driver.execute_script("arguments[0].scrollIntoView();", Mine)
+                Mine_Button.click()
+            else :
+                break
+        except ElementClickInterceptedException:
+            pass
+            break
+        except StaleElementReferenceException:
+            pass
+            break
+        except WebDriverException:
+            pass
+            break
+    
+    #Check for Farm   
+    while True:
+        Farm = driver.find_element(By.XPATH, FarmStore)
+        Farm_attribute = Farm.get_attribute("class")
+        try:
+            if "enabled" in Farm_attribute:
+                driver.execute_script("arguments[0].scrollIntoView();", Farm)
+                Farm_Button.click()
+            else :
+                break
+        except ElementClickInterceptedException:
+            pass
+            break
+        except StaleElementReferenceException:
+            pass
+            break
+        except WebDriverException:
+            pass
+            break
+    
+    
+    #Check for grandmom
+    while True :
+        Grandmom = driver.find_element(By.XPATH, GrandmomStore)
+        Grandmom_attribute = Grandmom.get_attribute("class")
+        try:
+            if "enabled" in Grandmom_attribute:
+                driver.execute_script("arguments[0].scrollIntoView();", Grandmom)
+                Grandmom_Button.click()
+            else :
+                break
+        except ElementClickInterceptedException:
+            pass
+            break
+        except StaleElementReferenceException:
+            pass
+            break
+        except WebDriverException:
+            pass
+            break
+    
+    #Check for clicker
+    while True :
+        Clicker = driver.find_element(By.XPATH, ClickerStore)
+        Clicker_attribute = Clicker.get_attribute("class")
+        try:
+            if "enabled" in Clicker_attribute:
+                driver.execute_script("arguments[0].scrollIntoView();", Clicker)
+                Clicker_Button.click()
+            else : 
+                break
+        except ElementClickInterceptedException:
+            pass
+            break
+        except StaleElementReferenceException:
+            pass
+            break
+        except WebDriverException:
+            pass
+            break
+
+    
+    
+    
+    
+    
+# Replace 'path_to_driver_executable' with the actual path to your WebDriver executable
+chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument("--no-sandbox")
+chrome_options.add_argument("--disable-dev-shm-usage")
+chrome_options.add_argument("--disable-infobars")
+chrome_options.add_argument("--disable-features=VizDisplayCompositor")
+chrome_options.add_argument("--disable-gpu")
+
+
+service = Service(ChromeDriverManager().install())
+driver = webdriver.Chrome(service=service, options=chrome_options)
+NotBot = '/html/body/div[3]/div[2]/div[1]/div[2]/div[2]/button[1]'
+Languege = '//*[@id="langSelect-EN"]'
+Cookie = '//*[@id="bigCookie"]'
+ClickerStore = '/html/body/div[2]/div[2]/div[19]/div[3]/div[6]/div[2]'
+GrandmomStore = '/html/body/div[2]/div[2]/div[19]/div[3]/div[6]/div[3]'
+FarmStore = '/html/body/div/div[2]/div[19]/div[3]/div[6]/div[4]'
+MineStore = '/html/body/div/div[2]/div[19]/div[3]/div[6]/div[5]'
+FactoryStore = '/html/body/div/div[2]/div[19]/div[3]/div[6]/div[6]'
+BankStore = '/html/body/div/div[2]/div[19]/div[3]/div[6]/div[7]'
+TempleStore = '/html/body/div/div[2]/div[19]/div[3]/div[6]/div[8]'
+WizardsTowerStore = '/html/body/div/div[2]/div[19]/div[3]/div[6]/div[9]'
+ShipmentStore = '/html/body/div/div[2]/div[19]/div[3]/div[6]/div[10]'
+AlchamyLabStore = '/html/body/div/div[2]/div[19]/div[3]/div[6]/div[11]'
+PortalStore = '/html/body/div/div[2]/div[19]/div[3]/div[6]/div[12]'
+TimeMachineStore = '/html/body/div/div[2]/div[19]/div[3]/div[6]/div[13]'
+AntyMatterCondencerStore = '/html/body/div/div[2]/div[19]/div[3]/div[6]/div[14]'
+PrismStore = '/html/body/div/div[2]/div[19]/div[3]/div[6]/div[15]'
+ChanceMakerStore = '/html/body/div/div[2]/div[19]/div[3]/div[6]/div[16]'
+FractalEngineStore = '/html/body/div/div[2]/div[19]/div[3]/div[6]/div[17]'
+JavascriptConsoleStore = '/html/body/div/div[2]/div[19]/div[3]/div[6]/div[18]'
+IdlevarseStore = '/html/body/div/div[2]/div[19]/div[3]/div[6]/div[19]'
+CortexBakerStore = '/html/body/div/div[2]/div[19]/div[3]/div[6]/div[20]'
+YouStore = '/html/body/div/div[2]/div[19]/div[3]/div[6]/div[21]'
+url = "https://orteil.dashnet.org/cookieclicker/"
+js = "javascript: (function () {Game.LoadMod('https://cookiemonsterteam.github.io/CookieMonster/dist/CookieMonster.js');})();"
+
+driver.get(url)
+html_code = driver.page_source
+soup = BeautifulSoup(html_code, 'html.parser')
+#StartUp
+time.sleep(2)
+button = driver.find_element(By.XPATH, NotBot)
+button.click()
+button = driver.find_element(By.XPATH, Languege)
+button.click()
+time.sleep(2)
+driver.execute_script(js)
+time.sleep(2)
+#Main
+ClickCookie = driver.find_element(By.XPATH, Cookie)
+Before = int(round(time.time()))
+while True:
+    ClickCookie.click()
+    Now = int(round(time.time()))
+    if (Before + 6 <= Now) :
+        Before = Now
+        Store()
+        
+    
+
+
+time.sleep(2)           
+driver.quit()
