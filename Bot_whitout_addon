@@ -517,7 +517,6 @@ button.click()
 button = driver.find_element(By.XPATH, Languege)
 button.click()
 time.sleep(2)
-
 #Main
 ClickCookie = driver.find_element(By.XPATH, Cookie)
 Before = int(round(time.time()))
